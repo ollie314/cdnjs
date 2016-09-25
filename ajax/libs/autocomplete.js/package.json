@@ -5,7 +5,6 @@
     "autocomplete",
     "typeahead"
   ],
-  "homepage": "https://github.com/algolia/autocomplete.js",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -14,7 +13,7 @@
   "dependencies": {
     "jquery": ">= 1.7"
   },
-  "version": "0.12.0",
+  "version": "0.21.7",
   "npmName": "autocomplete.js",
   "npmFileMap": [
     {
@@ -24,5 +23,6 @@
       ]
     }
   ],
-  "filename": "autocomplete.jquery.min.js"
+  "filename": "autocomplete.jquery.min.js",
+  "author": "Algolia Team <support@algolia.com>"
 }

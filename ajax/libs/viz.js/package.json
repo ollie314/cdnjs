@@ -1,8 +1,8 @@
 {
   "name": "viz.js",
   "filename": "viz.js",
-  "version": "0.0.3",
-  "description": "A hack to put GraphViz on the web.",
+  "version": "1.3.0",
+  "description": "A hack to put Graphviz on the web.",
   "homepage": "https://github.com/mdaines/viz.js/",
   "author": {
     "name": "Mike Daines",
@@ -16,5 +16,14 @@
   "keywords": [
     "GraphViz",
     "viz"
+  ],
+  "npmName": "viz.js",
+  "npmFileMap": [
+    {
+      "basePath": "",
+      "files": [
+        "viz*"
+      ]
+    }
   ]
 }

@@ -8,7 +8,6 @@
     "pick",
     "coordinates"
   ],
-  "homepage": "https://github.com/barinbritva/coordinates-picker",
   "autoupdate": {
     "source": "git",
     "target": "git://github.com/barinbritva/coordinates-picker.git",
@@ -22,5 +21,10 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/barinbritva/coordinates-picker.git"
+  },
+  "author": {
+    "name": "Barin Britva",
+    "email": "barinbritva@outlook.com",
+    "homepage": "http://barinbritva.ru"
   }
 }

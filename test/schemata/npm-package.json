@@ -15,11 +15,12 @@
             },
         "version": {
             "type": "string",
-            "required": true,
+            "required": false,
             "description": "Version must be parseable by node-semver, which is bundled with npm as a dependency."
             },
         "description": {
             "type": "string",
+            "required": true,
             "format": "multiline"
             },
         "keywords": {
@@ -33,6 +34,20 @@
         "dependencies": {
             "type": "object",
             "additionalProperties": "string"
+            },
+        "repository": {
+            "type": "object",
+            "additionalProperties": "string"
+            },
+        "npmName": {
+            "type": "string"
+            },
+        "npmFileMap": {
+            "type": "array",
+            "items": "object"
+            },
+        "autoupdate": {
+            "type": "object"
             },
         "private": {
             "type": "boolean"

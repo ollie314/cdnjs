@@ -1,7 +1,7 @@
 {
   "name": "js-data",
   "description": "Robust, framework-agnostic in-memory data store.",
-  "version": "2.6.1",
+  "version": "2.9.0",
   "homepage": "http://www.js-data.io",
   "repository": {
     "type": "git",
@@ -39,15 +39,12 @@
   "npmName": "js-data",
   "npmFileMap": [
     {
-      "basePath": "/dist",
+      "basePath": "dist",
       "files": [
-        "*"
+        "**/!(*.ts)"
       ]
     }
   ],
   "filename": "js-data.min.js",
-  "requiredFiles": [
-    "js-data-debug.min.js"
-  ],
   "license": "MIT"
 }

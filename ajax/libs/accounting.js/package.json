@@ -10,11 +10,7 @@
     "money",
     "currency"
   ],
-  "maintainers": [
-    {
-      "name": "josscrowcroft"
-    }
-  ],
+  "license": "MIT",
   "npmName": "accounting",
   "npmFileMap": [
     {

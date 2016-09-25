@@ -1,7 +1,7 @@
 {
   "name": "keen-js",
   "filename": "keen.min.js",
-  "version": "3.2.7",
+  "version": "3.4.1",
   "description": "Keen IO JavaScript SDK",
   "license": "MIT",
   "authors": [
@@ -28,7 +28,6 @@
     "keen.io",
     "keen-io"
   ],
-  "homepage": "https://github.com/keen/keen-js",
   "repository": {
     "type": "git",
     "url": "https://github.com/keen/keen-js.git"

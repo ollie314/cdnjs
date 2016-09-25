@@ -1,9 +1,7 @@
 {
   "name": "barn",
   "filename": "barn.min.js",
-  "version": "0.2.0",
-  "homepage": "https://github.com/arokor/barn",
-  "authors": "Aron Kornhall <aron@kornhall.se>",
+  "version": "0.2.1",
   "description": "Fast, atomic persistent storage layer on top of localstorage",
   "keywords": [
     "persistence",
@@ -21,5 +19,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/arokor/barn"
-  }
+  },
+  "author": "Aron Kornhall <aron@kornhall.se>"
 }

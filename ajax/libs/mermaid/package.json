@@ -1,18 +1,11 @@
 {
   "name": "mermaid",
   "filename": "mermaid.min.js",
-  "version": "0.5.3",
-  "description": "Generation of diagrams and flowcharts from text in a similar manner as markdown.",
-  "homepage": "https://github.com/knsv/mermaid",
+  "version": "6.0.0",
+  "description": "Markdownish syntax for generating flowcharts, sequence diagrams, class diagrams and gantt charts.",
   "keywords": [
     "mermaid",
     "mermaid.js"
-  ],
-  "maintainers": [
-    {
-      "name": "KnutSveidqvist",
-      "web": "https://github.com/knsv/mermaid"
-    }
   ],
   "autoupdate": {
     "source": "git",
@@ -26,5 +19,6 @@
     "type": "git",
     "url": "https://github.com/knsv/mermaid"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "author": "Knut Sveidqvist"
 }

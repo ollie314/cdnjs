@@ -1,7 +1,7 @@
 {
   "name": "floatthead",
-  "version": "1.3.1",
-  "description": "locking table headers without special css",
+  "version": "1.4.2",
+  "description": "fixed table header plugin that works",
   "filename": "jquery.floatThead.min.js",
   "dependencies": {},
   "repository": {
@@ -28,6 +28,5 @@
     "scrolling table"
   ],
   "author": "Misha Koryak",
-  "license": "CC BY-SA 4.0",
-  "homepage": "https://github.com/mkoryak/floatThead"
+  "license": "CC BY-SA 4.0"
 }

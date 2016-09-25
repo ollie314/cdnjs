@@ -1,6 +1,6 @@
 {
   "name": "Shuffle",
-  "version": "3.1.1",
+  "version": "4.0.2",
   "description": "Categorize, sort, and filter a responsive grid of items",
   "keywords": [
     "jquery-plugin",
@@ -15,23 +15,23 @@
     "mobile",
     "tiles"
   ],
-  "filename": "jquery.shuffle.min.js",
+  "filename": "shuffle.min.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/Vestride/Shuffle.git"
   },
   "author": "Glen Cheney <cheney.glen@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/Vestride/Shuffle",
   "dependencies": {
     "jquery": ">=1.9.0"
   },
-  "autoupdate": {
-    "source": "git",
-    "target": "git://github.com/Vestride/Shuffle.git",
-    "basePath": "dist",
-    "files": [
-      "**/*"
-    ]
-  }
+  "npmName": "shufflejs",
+  "npmFileMap": [
+    {
+      "basePath": "dist",
+      "files": [
+        "**/*"
+      ]
+    }
+  ]
 }

@@ -1,30 +1,28 @@
 {
   "name": "howler",
   "filename": "howler.min.js",
-  "version": "1.1.27",
+  "version": "2.0.0",
   "description": "Javascript audio library for the modern web.",
-  "homepage": "http://howlerjs.com/",
+  "homepage": "https://howlerjs.com/",
   "keywords": [
-    "audio"
-  ],
-  "maintainers": [
-    {
-      "name": "James Simpson",
-      "web": "http://goldfirestudios.com/about"
-    }
+    "howler",
+    "howler.js",
+    "audio",
+    "sound",
+    "webaudio"
   ],
   "autoupdate": {
     "source": "git",
     "target": "git://github.com/goldfire/howler.js.git",
-    "basePath": "",
+    "basePath": "dist",
     "files": [
-      "howler.js",
-      "howler.min.js"
+      "**/*"
     ]
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/goldfire/howler.js.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "author": "James Simpson <james@goldfirestudios.com> (http://goldfirestudios.com)"
 }

@@ -1,9 +1,7 @@
 {
   "name": "furtive",
   "filename": "furtive.min.css",
-  "version": "2.2.3",
-  "homepage": "https://github.com/johnotander/furtive",
-  "authors": "John Otander <johnotander@gmail.com>",
+  "version": "2.2.4",
   "description": "A forward-thinking, CSS micro-framework. Minimal by design.",
   "keywords": [
     "furtive",
@@ -25,5 +23,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/johnotander/furtive"
-  }
+  },
+  "author": "John Otander <johnotander@gmail.com>"
 }

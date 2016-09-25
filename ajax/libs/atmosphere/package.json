@@ -3,7 +3,6 @@
   "filename": "atmosphere.min.js",
   "version": "2.2.9",
   "description": "A browser-side JavaScript client for the Atmosphere",
-  "homepage": "https://github.com/Atmosphere/atmosphere-javascript",
   "keywords": [
     "ws",
     "websocket",
@@ -12,11 +11,6 @@
     "comet",
     "streaming",
     "longpolling"
-  ],
-  "maintainers": [
-    {
-      "name": "Donghwan Kim"
-    }
   ],
   "autoupdate": {
     "source": "git",
@@ -29,5 +23,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Atmosphere/atmosphere-javascript.git"
-  }
+  },
+  "license": "Apache-2.0"
 }

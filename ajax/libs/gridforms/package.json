@@ -1,11 +1,8 @@
 {
   "name": "gridforms",
-  "version": "1.0.6",
+  "version": "1.0.10",
   "filename": "gridforms.min.css",
   "homepage": "kumailht.com/gridforms",
-  "authors": [
-    "Kumail Hunaid <contact@kumailht.com>"
-  ],
   "description": "Data entry can be beautiful",
   "keywords": [
     "Responsive",
@@ -21,12 +18,10 @@
       "gridforms.css"
     ]
   },
-  "requiredFiles": [
-    "gridforms.min.js"
-  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/kumailht/gridforms.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "author": "Kumail Hunaid <contact@kumailht.com>"
 }

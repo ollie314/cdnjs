@@ -1,6 +1,6 @@
 {
   "name": "markdown-it",
-  "version": "5.0.0",
+  "version": "8.0.0",
   "filename": "markdown-it.min.js",
   "description": "Markdown-it - modern pluggable markdown parser.",
   "keywords": [
@@ -10,7 +10,6 @@
     "markdown-it",
     "markdown-it-plugin"
   ],
-  "homepage": "https://github.com/markdown-it/markdown-it",
   "repository": {
     "type": "git",
     "url": "git://github.com/markdown-it/markdown-it.git"

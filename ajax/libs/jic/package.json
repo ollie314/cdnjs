@@ -1,11 +1,7 @@
 {
   "name": "jic",
   "filename": "JIC.min.js",
-  "version": "1.1.1",
-  "homepage": "https://github.com/brunobar79/J-I-C",
-  "authors": [
-    "Bruno Barbieri <brunobar79@gmail.com>"
-  ],
+  "version": "2.0.2",
   "description": "Javascript Image Compressor using HTML5 Canvas & File API that allows you to compress your jpeg & png images before uploading to the server (100% client-side and no extra libraries required!)",
   "keywords": [
     "image",
@@ -29,5 +25,6 @@
     "files": [
       "**/*"
     ]
-  }
+  },
+  "author": "Bruno Barbieri <brunobar79@gmail.com>"
 }

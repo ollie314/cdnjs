@@ -1,6 +1,6 @@
 {
   "name": "vex-js",
-  "version": "2.3.2",
+  "version": "3.0.0",
   "description": "Beautiful, functional, dialogs in Javascript",
   "author": "Adam Schwartz <aschwartz@hubspot.com>",
   "license": "MIT",
@@ -12,10 +12,20 @@
   "autoupdate": {
     "source": "git",
     "target": "git://github.com/HubSpot/vex.git",
-    "basePath": "",
+    "basePath": "dist",
     "files": [
-      "css/**/vex*",
-      "js/**/vex*"
+      "**/*"
     ]
-  }
+  },
+  "keywords": [
+    "dialog",
+    "modal",
+    "client-side",
+    "javascript",
+    "css",
+    "themes",
+    "alert",
+    "confirm",
+    "prompt"
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "axios",
-  "version": "0.7.0",
+  "version": "0.14.0",
   "description": "Promise based HTTP client for the browser and node.js",
   "repository": {
     "type": "git",
@@ -16,7 +16,6 @@
   ],
   "author": "Matt Zabriskie",
   "license": "MIT",
-  "homepage": "https://github.com/mzabriskie/axios",
   "autoupdate": {
     "source": "git",
     "target": "git://github.com/mzabriskie/axios.git",

@@ -2,8 +2,7 @@
   "name": "mojio-js",
   "filename": "mojio-js.min.js",
   "version": "3.5.2",
-  "description": "Mojio's mojio-js is a client to Mojio's connected car API.",
-  "homepage": "https://github.com/mojio/mojio-js",
+  "description": "Mojio javascript REST client.",
   "keywords": [
     "Mojio",
     "javascript",
@@ -23,5 +22,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/mojio/mojio-js"
-  }
+  },
+  "author": "Robb Lovell"
 }

@@ -1,18 +1,17 @@
 {
   "name": "startbootstrap-landing-page",
   "filename": "css/landing-page.min.css",
-  "version": "1.0.4",
-  "homepage": "http://startbootstrap.com/template-overviews/landing-page/",
-  "authors": "David Miller",
+  "version": "3.3.7",
+  "homepage": "https://startbootstrap.com/template-overviews/landing-page/",
   "description": "A responsive, Bootstrap landing page template created by Start Bootstrap",
   "keywords": [
     "bootstrap",
     "theme"
   ],
-  "license": "Apache",
+  "license": "MIT",
   "autoupdate": {
     "source": "git",
-    "target": "git://github.com/IronSummitMedia/startbootstrap-landing-page.git",
+    "target": "git://github.com/BlackrockDigital/startbootstrap-landing-page.git",
     "basePath": "",
     "files": [
       "css/landing-page.css"
@@ -20,6 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/IronSummitMedia/startbootstrap-landing-page"
-  }
+    "url": "https://github.com/BlackrockDigital/startbootstrap-landing-page"
+  },
+  "author": "David Miller"
 }

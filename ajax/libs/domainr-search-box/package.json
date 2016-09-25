@@ -1,8 +1,7 @@
 {
   "name": "domainr-search-box",
-  "version": "0.0.8",
+  "version": "0.0.13",
   "description": "Domainr instant search box for your site",
-  "homepage": "https://github.com/domainr/domainr-search-box",
   "repository": {
     "type": "git",
     "url": "https://github.com/domainr/domainr-search-box.git"

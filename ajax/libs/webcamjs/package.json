@@ -1,9 +1,8 @@
 {
   "name": "webcamjs",
-  "version": "1.0.4",
+  "version": "1.0.16",
   "description": "HTML5 Webcam Image Capture Library with Flash Fallback",
   "author": "Joseph Huckaby <jhuckaby@gmail.com>",
-  "homepage": "https://github.com/jhuckaby/webcamjs",
   "license": "MIT",
   "filename": "webcam.min.js",
   "repository": {

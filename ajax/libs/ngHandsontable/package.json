@@ -1,0 +1,25 @@
+{
+  "name": "ngHandsontable",
+  "description": "AngularJS directive for Handsontable",
+  "author": "Marcin Warpechowski <hello@handsontable.com>",
+  "version": "0.12.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/handsontable/ngHandsontable.git"
+  },
+  "license": "MIT",
+  "filename": "ngHandsontable.min.js",
+  "keywords": [
+    "data grid applications",
+    "AngularJS",
+    "ngHandsontable"
+  ],
+  "autoupdate": {
+    "source": "git",
+    "target": "git://github.com/handsontable/ngHandsontable.git",
+    "basePath": "dist",
+    "files": [
+      "**/*"
+    ]
+  }
+}

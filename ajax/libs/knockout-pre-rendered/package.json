@@ -1,6 +1,6 @@
 {
   "name": "knockout-pre-rendered",
-  "version": "0.6.2",
+  "version": "0.8.0",
   "description": "Knockout pre-rendered",
   "repository": {
     "type": "git",
@@ -15,7 +15,6 @@
   ],
   "author": "Erik Schierboom",
   "license": "Apache",
-  "homepage": "https://github.com/ErikSchierboom/knockout-pre-rendered",
   "dependencies": {},
   "autoupdate": {
     "source": "git",

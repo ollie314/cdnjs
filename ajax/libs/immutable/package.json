@@ -1,7 +1,7 @@
 {
   "name": "immutable",
   "filename": "immutable.min.js",
-  "version": "3.7.5",
+  "version": "3.8.1",
   "description": "Immutable Data Collections",
   "keywords": [
     "immutable",
@@ -15,7 +15,6 @@
     "sequence",
     "iteration"
   ],
-  "homepage": "https://github.com/facebook/immutable-js",
   "npmName": "immutable",
   "npmFileMap": [
     {
@@ -29,5 +28,9 @@
     "type": "git",
     "url": "https://github.com/facebook/immutable-js"
   },
-  "license": "BSD-3-Clause"
+  "license": "BSD-3-Clause",
+  "author": {
+    "name": "Lee Byron",
+    "url": "https://github.com/leebyron"
+  }
 }

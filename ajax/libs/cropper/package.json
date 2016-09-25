@@ -1,7 +1,7 @@
 {
   "name": "cropper",
   "description": "A simple jQuery image cropping plugin.",
-  "version": "1.0.0",
+  "version": "2.3.4",
   "filename": "cropper.min.js",
   "keywords": [
     "image",
@@ -19,7 +19,6 @@
     "name": "Fengyuan Chen",
     "url": "https://github.com/fengyuanchen"
   },
-  "homepage": "https://github.com/fengyuanchen/cropper",
   "repository": {
     "type": "git",
     "url": "https://github.com/fengyuanchen/cropper.git"

@@ -1,7 +1,7 @@
 {
   "name": "vue-router",
   "filename": "vue-router.min.js",
-  "version": "0.7.2",
+  "version": "0.7.13",
   "description": "A router for Vue.js",
   "repository": {
     "type": "git",
@@ -15,7 +15,6 @@
   ],
   "author": "Evan You",
   "license": "MIT",
-  "homepage": "https://github.com/vuejs/vue-router#readme",
   "autoupdate": {
     "source": "git",
     "target": "git://github.com/vuejs/vue-router.git",

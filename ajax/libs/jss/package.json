@@ -2,8 +2,7 @@
   "name": "jss",
   "filename": "jss.min.js",
   "description": "Composable and reusable style sheets.",
-  "version": "2.3.5",
-  "homepage": "https://github.com/jsstyles/jss#readme",
+  "version": "5.5.5",
   "author": {
     "name": "Oleg Slobodskoi",
     "email": "oleg008@gmail.com"

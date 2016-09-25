@@ -1,0 +1,26 @@
+{
+  "name": "agility",
+  "description": "Javascript MVC for the \"write less, do more\"",
+  "homepage": "http://agilityjs.com",
+  "version": "0.1.3",
+  "licence": "MIT",
+  "keywords": [
+    "mvc",
+    "agility",
+    "client",
+    "javascript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arturadib/agility.git"
+  },
+  "filename": "agility.min.js",
+  "autoupdate": {
+    "source": "git",
+    "target": "git://github.com/arturadib/agility.git",
+    "basePath": "",
+    "files": [
+      "agility*"
+    ]
+  }
+}

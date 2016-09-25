@@ -1,6 +1,6 @@
 {
   "name": "libsodium-wrappers",
-  "version": "0.2.10",
+  "version": "0.4.2",
   "filename": "sodium.min.js",
   "description": "The Sodium cryptographic library compiled to pure JavaScript (wrappers)",
   "repository": {
@@ -24,7 +24,6 @@
   ],
   "author": "Ahmad Ben Mrad (@BatikhSouri)",
   "license": "ISC",
-  "homepage": "https://github.com/jedisct1/libsodium.js",
   "autoupdate": {
     "source": "git",
     "target": "git://github.com/jedisct1/libsodium.js.git",

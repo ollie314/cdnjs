@@ -1,7 +1,7 @@
 {
   "name": "gist-embed",
   "filename": "gist-embed.min.js",
-  "version": "2.4",
+  "version": "2.5",
   "description": "Ultra powered gist embedding for your website",
   "homepage": "http://blairvanderhoof.com/gist-embed/",
   "keywords": [
@@ -10,13 +10,6 @@
     "blog",
     "syntax",
     "highlighting"
-  ],
-  "maintainers": [
-    {
-      "name": "Blair Vanderhoof",
-      "email": "blairv@gmail.com",
-      "web": "http://blairvanderhoof.com/"
-    }
   ],
   "autoupdate": {
     "source": "git",
@@ -30,5 +23,6 @@
     "type": "git",
     "url": "https://github.com/blairvanderhoof/gist-embed"
   },
-  "license": "BSD-2-Clause"
+  "license": "BSD-2-Clause",
+  "author": "Blair Vanderhoof"
 }

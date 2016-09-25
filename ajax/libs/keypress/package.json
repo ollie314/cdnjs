@@ -1,11 +1,7 @@
 {
   "name": "keypress",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "filename": "keypress.min.js",
-  "homepage": "https://github.com/dmauro/Keypress",
-  "authors": [
-    "David Mauro <email@dmauro.com>"
-  ],
   "keywords": [
     "keypress"
   ],
@@ -22,5 +18,6 @@
     "type": "git",
     "url": "https://github.com/dmauro/Keypress"
   },
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "author": "David Mauro <email@dmauro.com>"
 }

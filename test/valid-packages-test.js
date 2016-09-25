@@ -6,9 +6,10 @@ var assert = require("assert"),
     glob = require("glob"),
     vows = require("vows-si"),
     jsv = require("JSV").JSV.createEnvironment(),
+    GitUrlParse = require("git-url-parse"),
     isThere = require("is-there");
 
-function parse(json_file, ignore_missing, ignore_parse_fail) {
+function parse(json_file, ignore_missing) {
     var content;
 
     try {
@@ -22,9 +23,7 @@ function parse(json_file, ignore_missing, ignore_parse_fail) {
     try {
         return JSON.parse(content);
     } catch (err2) {
-        if (!ignore_parse_fail) {
-            assert.ok(0, json_file + " failed to parse, you can validate your json here: http://jsonlint.com/");
-        }
+        assert.ok(0, json_file + " failed to parse, you can validate your json here: http://jsonlint.com/");
         return null;
     }
 }
@@ -40,8 +39,10 @@ function pretty_error(err) {
 
 // load up those files
 var packages = glob.sync("./ajax/libs/*/").map(function (pkg) {
-        return pkg + "package.json";
-    }),
+        if (!fs.lstatSync(pkg.substring(0, pkg.length - 1)).isSymbolicLink()) {
+            return pkg + "package.json";
+        }
+    }).filter(function(n){ return n != undefined }),
     schemata = glob.sync("./test/schemata/*.json").map(function (schema) {
         return jsv.createSchema(parse(schema));
     }),
@@ -59,7 +60,7 @@ packages.map(function (pkg) {
             pkg_name(pkg) + " malformed!");
     };
     package_vows[pname + " package.json is valid"] = function (pkg) {
-        var pkg_obj = parse(pkg, true, true),
+        var pkg_obj = parse(pkg, true),
             valid = false,
             errors;
         if (pkg_obj === null) {
@@ -95,72 +96,52 @@ packages.map(function (pkg) {
         }
     };
     package_vows[pname + ": filename from package.json exists"] = function (pkg) {
-        var json = parse(pkg, true, true);
+        var json = parse(pkg, true);
+        if (json.version === undefined) {
+           return;
+        }
         var filePath = "./ajax/libs/" + json.name + "/"+ json.version
             + "/" + json.filename;
         assert.ok(isThere(filePath),
                   filePath +" does not exist but is referenced in package.json!");
     };
-    package_vows[pname + ": required file exist"] = function (pkg) {
-      var json = parse(pkg, true, true);
-      if (json.requiredFiles !== undefined) {
-        for (var i in json.requiredFiles) {
-          var filePath = "./ajax/libs/" + json.name + "/"+ json.version + "/" + json.requiredFiles[i];
-          assert.ok(isThere(filePath), filePath +" does not exist but is required!");
-        }
-      }
-    };
     package_vows[pname + ": name in package.json should be parent folder name"] = function (pkg) {
-        var json = parse(pkg, true, true);
+        var json = parse(pkg, true);
         var dirs = pkg.split("/");
         var trueName = dirs[dirs.length - 2];
-        if (!fs.lstatSync("./ajax/libs/" + trueName).isSymbolicLink()) {
-            assert.ok(trueName == json.name,
-                pkg_name(pkg) + ": Name property should be '" + trueName + "', not '" + json.name +"'");
+        assert.ok(trueName == json.name,
+            pkg_name(pkg) + ": Name property should be '" + trueName + "', not '" + json.name +"'");
+    };
+
+     package_vows[pname + ": make sure repository field follow npm package.json format"] = function (pkg) {
+        var json = parse(pkg, true);
+        if (json.repository) {
+            assert.ok(
+                 ((json.repository.type !== undefined) && (json.repository.url  !== undefined)),
+                "There repository field in " + json.name + "'s package.json should follow npm's format, must have type and url field."
+            );
         }
     };
 
-    package_vows[pname + ": validate type of repository/repositories"] = function (pkg) {
-        var json = parse(pkg, true, true);
-            assert.ok(
-                (
-                    (json.repositories === undefined) ||
-                    (Array.isArray(json.repositories) && json.repositories.length > 1)
-                ),
-            "There is only one repo in " + json.name + "'s package.json, please use repository object instead of repositories array."
-            );
-            assert.ok(!Array.isArray(json.repository), "repository should not be an array, please use repositories instead if there are multiple repos in " + json.name + "'s package.json");
-    };
-
-     package_vows[pname + ": do not use repositories if there is only one repo"] = function (pkg) {
-        var json = parse(pkg, true, true);
-            assert.ok(
-                (
-                    (json.repositories === undefined) ||
-                    (Array.isArray(json.repositories) && json.repositories.length > 1)
-                ),
-            "There is only one repo in " + json.name + "'s package.json, please use repository object instead of repositories array."
-            );
-    };   package_vows[pname + ": make sure repository field follow npm package.json format"] = function (pkg) {
-        var json = parse(pkg, true, true);
-            if (json.repositories === undefined && json.repository !== undefined) {
-                json.repositories = [];
-                json.repositories[0] = json.repository;
-            }
-            for (var repo in json.repositories) {
-                assert.ok(
-                    (
-                        (json.repositories[repo].type !== undefined) &&
-                        (json.repositories[repo].url  !== undefined)
-                    ),
-                "There repository field in " + json.name + "'s package.json should follow npm's format, must have type and url field."
-                );
-            }
-    };
-
+    package_vows[pname + ": must have auto-update config if it has no version specified"] = function (pkg) {
+        var json = parse(pkg, true);
+        if (json.version != undefined) {
+          return;
+        }
+        assert.ok((json.npmName != undefined && json.npmFileMap != undefined && Array.isArray(json.npmFileMap)) || (json.autoupdate != undefined),
+                   pkg_name(pkg) + ": must have a valid auto-update config");
+    }
+    package_vows[pname + ": npmName and npmFileMap should be a pair"] = function (pkg) {
+        var json = parse(pkg, true);
+        if (!json.npmName && !json.npmFileMap) {
+          return;
+        }
+        assert.ok(json.npmName != undefined && json.npmFileMap != undefined,
+                  pkg_name(pkg) + ": npmName and npmFileMap should be a pair");
+    }
     var targetPrefixes = new RegExp("^git://.+\.git$");
     package_vows[pname + ": autoupdate block is valid (if present)"] = function (pkg) {
-        var json = parse(pkg, true, true),
+        var json = parse(pkg, true),
             fileMapPostfixes = new RegExp("\\*\\*$");
         if (json.autoupdate) {
             assert.ok(json.autoupdate.source == "git",
@@ -174,6 +155,8 @@ packages.map(function (pkg) {
             }
 
         } else if (json.npmFileMap) {
+            assert.ok(Array.isArray(json.npmFileMap),
+                pkg_name(pkg) + ": npmFileMap should be an array and include one or multiply objects to describe corresponding bash path and files");
             for (var i in json.npmFileMap) {
                 for (var j in json.npmFileMap[i].files) {
                     assert.ok(!fileMapPostfixes.test(json.npmFileMap[i].files[j]),
@@ -182,13 +165,13 @@ packages.map(function (pkg) {
             }
         }
     }
-    package_vows[pname + ": should not have both multiple auto-update configs"] = function(pkg) {
-        var json = parse(pkg, true, true);
+    package_vows[pname + ": should not have multiple auto-update configs"] = function(pkg) {
+        var json = parse(pkg, true);
         assert.ok(json.autoupdate === undefined || json.npmFileMap === undefined,
             pkg_name(pkg) + ": has both git and npm auto-update config, should remove one of it");
     }
     package_vows[pname + ": should point filename field to minified file"] = function (pkg) {
-        var json = parse(pkg, true, true);
+        var json = parse(pkg, true);
         if (json.filename) {
             var path = "./ajax/libs/" + json.name + "/"+ json.version + "/",
                 orig = json.filename.split("."),
@@ -207,28 +190,84 @@ packages.map(function (pkg) {
 
     package_vows[pname + ": format check"] = function (pkg) {
         var orig = fs.readFileSync(pkg, 'utf8'),
-            correct = JSON.stringify(JSON.parse(orig), null, 2) + '\n';
+            correct = JSON.stringify(JSON.parse(orig), null, 2) + '\n',
+            content = JSON.parse(correct);
+        if (content.version === undefined) {
+          return;
+        }
         assert.ok(orig === correct,
-            pkg_name(pkg) + ": package.json wrong indent, please use our tool: tools/fixFormat.js to fix it for you, here is an example: (Please ignore the first 2 spaces and the wildcard symbol in autoupadte config due to a bug)\n" + correct +"\n");
+            pkg_name(pkg) + ": package.json wrong indent, please use 2-spaces as indent, remove trailing spaces, you can use our tool: tools/fixFormat.js to fix it for you, here is an example: (Please ignore the first 2 spaces and the wildcard symbol in autoupadte config due to a bug)\n" + correct +"\n");
+        if (content.author != undefined) {
+            assert.ok(!Array.isArray(content.author),
+                pkg_name(pkg) + ": author field in package.json should be a object or string to show its author info, if there is multiple authors info, you should use 'authors' instead, you can use our tool: tools/fixFormat.js to fix it for you.");
+        }
+        if (content.authors != undefined) {
+            assert.ok(Array.isArray(content.authors) && content.authors.length > 1 ,
+                pkg_name(pkg) + ": authors field in package.json should be an array to include multiple authors info, if there is only one author, you should use 'author' instead, you can use our tool: tools/fixFormat.js to fix it for you.");
+        }
+        if (content.licenses != undefined) {
+            assert.ok(Array.isArray(content.licenses),
+                pkg_name(pkg) + ": licenses field in package.json should be an array to include multiple licenses info, if there is only one license, you should use 'license' instead, you can use our tool: tools/fixFormat.js to fix it for you.");
+        }
     }
 
     package_vows[pname + ": useless fields check"] = function (pkg) {
-        var json = parse(pkg, true, true);
-        var json_fix = json;
+        var json = parse(pkg, true);
+        var json_fix = JSON.parse(JSON.stringify(json));
+        delete json_fix.bin;
+        delete json_fix.jshintConfig;
+        delete json_fix.eslintConfig;
+        delete json_fix.requiredFiles
+        delete json_fix.styles;
+        delete json_fix.install;
+        delete json_fix.typescript;
+        delete json_fix.browserify;
+        delete json_fix.browser;
+        delete json_fix.jam;
+        delete json_fix.jest;
         delete json_fix.scripts;
         delete json_fix.devDependencies;
         delete json_fix.main;
         delete json_fix.peerDependencies;
         delete json_fix.contributors;
+        delete json_fix.maintainers;
         delete json_fix.bugs;
+        delete json_fix.gitHEAD;
+        delete json_fix.gitHead;
+        delete json_fix.spm;
+        delete json_fix.dist;
         delete json_fix.issues;
         delete json_fix.files;
         delete json_fix.ignore;
         delete json_fix.engines;
         delete json_fix.engine;
+        delete json_fix.directories;
+        delete json_fix.repositories;
 
-        assert.ok(json === json_fix,
-            pkg_name(pkg) + ": we don't need scripts, main, cnotributors, bugs, issues, files, ignore, engine(s) and (dev|peer)Dependencies fields in package.json");
+        assert.ok(JSON.stringify(json) === JSON.stringify(json_fix) ,
+            pkg_name(pkg) + ": we don't need bin, jshintConfig, eslintConfig, styles, install, typescript, browserify, browser, jam, jest, scripts, devDependencies, main, peerDependencies, contributors, bugs, gitHEAD, issues, files, ignore, engines, engine, directories, repositories and maintainers fields in package.json");
+    }
+    package_vows[pname + ": There must be repository information when using auto-update config"] = function(pkg) {
+        var json = parse(pkg, true);
+        assert.ok(
+            (
+                (json.repository !== undefined) ||
+                (json.autoupdate === undefined && json.npmFileMap === undefined)
+            ),
+            pkg_name(pkg) + ": Need to add repository information in package.json");
+    }
+    package_vows[pname + ": Homepage doesn't need to be set if it's the same as repository"] = function(pkg) {
+        var json = parse(pkg, true);
+        if ((json.repository != undefined) && (json.repository.type == 'git') && (json.homepage != undefined)) {
+            var repoUrlHttps = GitUrlParse(json.repository.url).toString("https");
+            assert.ok(
+                (
+                    (json.homepage != repoUrlHttps) &&
+                    (json.homepage != repoUrlHttps + '#readme') &&
+                    (json.homepage != repoUrlHttps + '.git')
+                ),
+                pkg_name(pkg) + ": Need to add repository information in package.json");
+        }
     }
     context[pname] = package_vows;
     suite.addBatch(context);

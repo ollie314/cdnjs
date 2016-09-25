@@ -1,6 +1,6 @@
 {
   "name": "clappr",
-  "version": "0.2.13",
+  "version": "0.2.63",
   "description": "An extensible media player for the web",
   "filename": "clappr.min.js",
   "repository": {
@@ -9,7 +9,6 @@
   },
   "author": "Globo.com",
   "license": "BSD",
-  "homepage": "https://github.com/clappr/clappr",
   "dependencies": {
     "underscore": "1.7.0",
     "mousetrap": "^1.4.6",
@@ -20,7 +19,7 @@
     "target": "git://github.com/clappr/clappr.git",
     "basePath": "dist",
     "files": [
-      "**/clappr*"
+      "**/*"
     ]
   }
 }

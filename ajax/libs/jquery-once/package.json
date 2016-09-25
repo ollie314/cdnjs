@@ -1,12 +1,11 @@
 {
   "name": "jquery-once",
   "description": "Act on jQuery elements only once.",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "keywords": [
     "jquery",
     "jquery-plugin"
   ],
-  "homepage": "https://github.com/RobLoach/jquery-once",
   "author": "Rob Loach (https://github.com/RobLoach)",
   "npmName": "jquery-once",
   "npmFileMap": [
